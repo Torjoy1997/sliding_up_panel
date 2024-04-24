@@ -243,7 +243,10 @@ class _SlidingUpPanelState extends State<SlidingUpPanel>
       if (widget.isDraggable && !_scrollingEnabled) _sc.jumpTo(0);
     });
 
-    widget.controller?._addState(this);
+    // in Flutter 3.0 it's very strict to check Null Safety value. without null check statemeant it dosen't compile the code
+    if (widget.controller != null) {
+      widget.controller!._addState(this);
+    }
   }
 
   @override
